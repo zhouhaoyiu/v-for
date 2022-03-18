@@ -4,9 +4,12 @@ const domNodePool = [];
 
 export function createApp(options) {
   // console.log(options);
+
+  // option 数组中的每一个选项
   for (let option in options) {
     switch (option) {
       case 'components':
+        // 对每一个component进行初始化
         initComponent(options[option]);
         break;
       default:
@@ -22,7 +25,7 @@ function initComponent(components) {
   console.log(components);
   for (let component of components) {
     let [template, state] = component();
-    console.log(template, state);
+    // console.log(template, state);
     const node = compileTemplate(template, state);
     domNodePool.push(node);
     // console.log(node);    
